@@ -2,13 +2,14 @@
 
 A modern Netflix-inspired web application built with React and Vite, featuring authentication and browsing capabilities.
 
-Create - vite React App
-Configure Tail wind - https://tailwindcss.com/docs/installation/using-vite
+- Create - vite React App
+- Configured Tailwind css - https://tailwindcss.com/docs/installation/using-vite
 
-set up routing - npm i react-router - https://reactrouter.com/start/data/installation
+- Routing of App - npm i react-router - https://reactrouter.com/start/data/installation
 
-Header
-
-Login Form
+- Header
+- SignIn SignUp Form
+- Form Validation
+- useRef Hook
 
 Features
