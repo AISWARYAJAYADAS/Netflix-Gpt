@@ -1,12 +1,64 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { signOut } from 'firebase/auth'
+import { auth } from '../utils/firebase'
+import { removeUser } from '../utils/userSlice'
+import { useNavigate, useLocation } from 'react-router'
+import { LOGO, generateAvatarUrl } from '../utils/constants'
 
 const Header = () => {
-  return (
-    <div className="absolute bg-gradient-to-b from-black to-transparent">
-        <img className='w-44' 
-        src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-08-26/consent/87b6a5c0-0104-4e96-a291-092c11350111/0198e689-25fa-7d64-bb49-0f7e75f898d2/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo" />
-    </div>
-  )
+    const user = useSelector(store => store.user)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    // Check if we're on login page
+    const isLoginPage = location.pathname === '/'
+
+    const handleSignOut = () => {
+        signOut(auth)
+            .then(() => {
+                dispatch(removeUser())
+                navigate('/')
+            })
+            .catch((error) => {
+                console.error("Error signing out:", error)
+            })
+    }
+
+    return (
+        <div className="absolute bg-gradient-to-b from-black to-transparent w-full z-10">
+            <div className="flex justify-between items-center px-6 py-4">
+                <img 
+                    className='w-44' 
+                    src={LOGO} 
+                    alt="Netflix Logo" 
+                />
+                
+                {/* Show sign out only when user is logged in AND not on login page */}
+                {user && !isLoginPage && (
+                    <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-2">
+                            <img 
+                                className="w-8 h-8 rounded-full bg-gray-600" 
+                                src={user.photoURL || generateAvatarUrl(user.displayName || user.email)} 
+                                alt="Profile" 
+                            />
+                            <span className="text-white text-sm font-medium">
+                                {user.displayName || user.email}
+                            </span>
+                        </div>
+                        <button 
+                            onClick={handleSignOut}
+                            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors"
+                        >
+                            Sign Out
+                        </button>
+                    </div>
+                )}
+            </div>
+        </div>
+    )
 }
 
 export default Header
