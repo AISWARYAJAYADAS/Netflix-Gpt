@@ -22,8 +22,15 @@ Live Demo → https://netflix-gpt-b889a.web.app/
 - Update Profile
 - Unsubscribed to the onAuthStateChanged callback
 - Add Hardcoded values into the constants file
-- Fetch from TMDB Movies
--
+- Registered for TMDB API and get Access token
+- Get data from TMDB Now playing movie list API.
+- Custom hook for Now Playing movies
+- Create movieSlice
+- Update Store with Movies data
+- Planning for main container and secondary container
+- Fetch data for trailer video
+- Update Store with Trailer Video Data
+- Embedded the youtube video and make it auto play and mute
 
 Features
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { signOut } from 'firebase/auth'
 import { auth } from '../utils/firebase'
@@ -11,8 +11,8 @@ const Header = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const location = useLocation()
+    const [logoError, setLogoError] = useState(false)
 
-    // Check if we're on login page
     const isLoginPage = location.pathname === '/'
 
     const handleSignOut = () => {
@@ -27,13 +27,20 @@ const Header = () => {
     }
 
     return (
-        <div className="absolute bg-gradient-to-b from-black to-transparent w-full z-10">
+        <div className="absolute bg-gradient-to-b from-black to-transparent w-full z-50">
             <div className="flex justify-between items-center px-6 py-4">
-                <img 
-                    className='w-44' 
-                    src={LOGO} 
-                    alt="Netflix Logo" 
-                />
+                {logoError ? (
+                    <div className="text-red-600 text-2xl font-bold tracking-wider">
+                        NETFLIX
+                    </div>
+                ) : (
+                    <img 
+                        className='w-44' 
+                        src={LOGO} 
+                        alt="Netflix Logo" 
+                        onError={() => setLogoError(true)}
+                    />
+                )}
                 
                 {/* Show sign out only when user is logged in AND not on login page */}
                 {user && !isLoginPage && (

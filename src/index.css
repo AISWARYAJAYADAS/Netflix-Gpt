@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Smooth scrolling */
+.scrollbar-hide {
+    scroll-behavior: smooth;
+}
+
+/* Prevent horizontal overflow on body */
+body {
+    overflow-x: hidden;
+}
+
+/* Ensure proper video scaling */
+iframe {
+    border: none;
+    outline: none;
+}

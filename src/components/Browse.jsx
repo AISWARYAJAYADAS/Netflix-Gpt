@@ -2,9 +2,16 @@ import React from 'react'
 import Header from './Header'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router'
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
+import MainContainer from './MainContainer'
+import SecondaryContainer from './SecondaryContainer'
+
 
 const Browse = () => {
     const user = useSelector(store => store.user)
+
+    useNowPlayingMovies()
+
 
     // If no user, redirect to login
     if (!user) {
@@ -12,12 +19,10 @@ const Browse = () => {
     }
 
     return (
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen bg-black relative">
             <Header />
-            <div className="pt-20 px-6">
-                <h1 className="text-white text-4xl font-bold">Browse</h1>
-                <p className="text-gray-400 mt-4">Welcome to Netflix GPT, {user.displayName || user.email}!</p>
-            </div>
+            <MainContainer />
+            <SecondaryContainer />
         </div>
     )
 }
