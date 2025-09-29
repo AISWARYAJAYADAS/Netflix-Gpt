@@ -5,10 +5,11 @@ import { Navigate } from 'react-router'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import MainContainer from './MainContainer'
 import SecondaryContainer from './SecondaryContainer'
-
+import GptSearchPage from './GptSearchPage'
 
 const Browse = () => {
     const user = useSelector(store => store.user)
+    const showGptSearch = useSelector(store => store.gpt.showGptSearch)
 
     useNowPlayingMovies()
 
@@ -21,8 +22,12 @@ const Browse = () => {
     return (
         <div className="min-h-screen bg-black relative">
             <Header />
-            <MainContainer />
-            <SecondaryContainer />
+            {showGptSearch ? <GptSearchPage /> : 
+            <>
+                <MainContainer />
+                <SecondaryContainer />
+            </>
+            }
         </div>
     )
 }

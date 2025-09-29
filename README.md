@@ -31,6 +31,12 @@ Live Demo → https://netflix-gpt-b889a.web.app/
 - Fetch data for trailer video
 - Update Store with Trailer Video Data
 - Embedded the youtube video and make it auto play and mute
+- Build Secondary component
+- Build MovieList
+- Build Movie Card
+- useTrailerMovies hook
+- GPT Search page, Gpt search bar
+- Multi language support
 
 Features
 

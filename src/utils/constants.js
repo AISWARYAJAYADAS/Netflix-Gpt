@@ -15,14 +15,22 @@ export const generateAvatarUrl = (name) => {
     return `${AVATAR_SERVICE}?name=${encodeURIComponent(name)}&background=${DEFAULT_AVATAR_CONFIG.background}&color=${DEFAULT_AVATAR_CONFIG.color}&size=${DEFAULT_AVATAR_CONFIG.size}`
 }
 
+// API Keys from environment variables with fallbacks
+export const API_KEY = import.meta.env.VITE_TMDB_API_KEY 
+export const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY 
+export const API_ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN 
+
+// TMDB API Options with Bearer token
 export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDQ0OGRiMzQ2Zjc5ZmZjNjlmMzBjMzhiNTFkOTk3MiIsIm5iZiI6MTcxNTI1MTA1Ny4wNzIsInN1YiI6IjY2M2NhNzcxMTI5NGM1NDVkNjdmZDBhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4Vv4tXRuqIVipdhrbXHv_64iHs1YqSDg8vnAZEJzRjw'
+    Authorization: `Bearer ${API_ACCESS_TOKEN}`
   }
 };
 
-export const API_ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDQ0OGRiMzQ2Zjc5ZmZjNjlmMzBjMzhiNTFkOTk3MiIsIm5iZiI6MTcxNTI1MTA1Ny4wNzIsInN1YiI6IjY2M2NhNzcxMTI5NGM1NDVkNjdmZDBhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4Vv4tXRuqIVipdhrbXHv_64iHs1YqSDg8vnAZEJzRjw";
-
-export const API_KEY = "84448db346f79ffc69f30c38b51d9972"
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "malayalam", name: "Malayalam" }
+]

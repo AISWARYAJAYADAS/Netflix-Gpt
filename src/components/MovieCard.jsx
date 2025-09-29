@@ -5,14 +5,14 @@ const MovieCard = ({ posterPath }) => {
 
     if (imageError || !posterPath) {
         return (
-            <div className="w-56 h-80 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-gray-400">No Image</span>
+            <div className="w-32 h-48 sm:w-48 sm:h-72 lg:w-56 lg:h-80 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-gray-400 text-xs sm:text-sm">No Image</span>
             </div>
         )
     }
 
     return (
-        <div className="w-56 h-80 rounded-lg overflow-hidden flex-shrink-0 cursor-pointer hover:scale-105 transition-transform duration-200">
+        <div className="w-32 h-48 sm:w-48 sm:h-72 lg:w-56 lg:h-80 rounded-lg overflow-hidden flex-shrink-0 cursor-pointer hover:scale-105 transition-transform duration-200">
             <img 
                 src={`https://image.tmdb.org/t/p/w500${posterPath}`} 
                 alt="Movie Poster" 
