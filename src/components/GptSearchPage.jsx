@@ -15,12 +15,6 @@ const GptSearchPage = () => {
         <div className="w-full max-w-7xl mx-auto">
           Search Section
           <div className="text-center mb-16">
-            {/* <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">
-              AI Movie Search
-            </h1> */}
-            {/* <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Tell us what you're in the mood for and let our AI find the perfect movies for you
-            </p> */}
             <GptSearchBar />
           </div>
 
